@@ -1,0 +1,181 @@
+Aula 03
+05/03/2022
+
+Regras da aula prática
+--> Estava funcionando antes, tem que funcionar hoje!
+--> Faltou! Corre atras
+
+
+Quem sou eu?
+sysadmin@operacao:~$ whoami
+sysadmin
+
+
+Qual o hostname (Nome da máquina)?
+sysadmin@operacao:~$ hostname
+operacao
+
+
+Mostra o diretório que estou trabalhando agora
+
+~-> Diretório home do usuário logado
+sysadmin@operacao:~$ pwd
+/home/sysadmin
+
+
+Comando su é usado para mudar de usuário via terminal a partir de um usuário que já foi logado
+sysadmin@operacao:~$ su
+
+root@operacao:/home/sysadmin# echo $USER
+sysadmin
+root@operacao:/home/sysadmin# poweroff
+bash: poweroff: comando não encontrado
+root@operacao:/home/sysadmin# reboot
+bash: reboot: comando não encontrado
+
+Se usar o comando su sem a opção (-) o login será executado com o perfil e permissões do primeiro usuario logado
+
+root@operacao:/home/sysadmin# exit
+
+Comando exit executa logoff do usuário logado com o comando su
+
+
+Comando su - faz login no usuário root com o perfil e as suas permissões:
+sysadmin@operacao:~$ su -
+Senha: 
+root@operacao:~# echo $USER
+root
+
+Comando 
+su - <nomedousuario>
+Para executar login em outros usuarios diferente do root
+
+Atualizando a lista de pacotes usando usuário comum sysadmin
+sysadmin@operacao:~$ apt update
+Lendo listas de pacotes... Pronto
+E: Não foi possível abrir arquivo de trava /var/lib/apt/lists/lock - open (13: Permissão negada)
+E: Impossível criar acesso exclusivo ao directório /var/lib/apt/lists/
+W: Problema ao remover o link do ficheiro /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permissão negada)
+W: Problema ao remover o link do ficheiro /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permissão negada)
+
+Comando não foi executado porque o usuario comum não tem poder para instalar via terminal usando apt
+
+
+Executando o comando de atualização com o sudo
+sysadmin@operacao:~$ sudo apt update
+
+Presumimos que você recebeu as instruções de sempre do administrador
+de sistema local. Basicamente, resume-se a estas três coisas:
+
+    #1) Respeite a privacidade dos outros.
+    #2) Pense antes de digitar.
+    #3) Com grandes poderes vêm grandes responsabilidades.
+
+[sudo] senha para sysadmin: 
+sysadmin não está no arquivo sudoers. Este incidente será relatado.
+
+Observer que o sudo não está configurado
+
+
+Configurar o sudo no Debian
+Tem que estar logado como root
+
+
+1)Incluir o usuário no grupo do sudo: 
+
+root@operacao:~# gpasswd -a sysadmin sudo
+Adicionando usuário sysadmin ao grupo sudo
+
+2) Editar o arquivo /etc/sudoers
+
+root@operacao:~# nano /etc/sudoers
+
+2.1) Incluir as linhas 16, 18, 19, 26 e 27
+
+###### /etc/sudoers
+
+1	#
+2	# This file MUST be edited with the 'visudo' command as root.
+3	#
+     4	# Please consider adding local content in /etc/sudoers.d/ instead of
+     5	# directly modifying this file.
+     6	#
+     7	# See the man page for details on how to write a sudoers file.
+     8	#
+     9	Defaults	env_reset
+    10	Defaults	mail_badpass
+    11	Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    12	
+    13	# Host alias specification
+    14	
+    15	# User alias specification
+    16	User_Alias	MYADMINS = sysadmin 	
+    17	# Cmnd alias specification
+    18	Cmnd_Alias	SHUTDOWN = /sbin/reboot, /sbin/poweroff
+    19	Cmnd_Alias	PKGMGMNT = /usr/bin/dpkg, /usr/bin/apt-get, /usr/bin/apt
+    20	# User privilege specification
+    21	root	ALL=(ALL:ALL) ALL
+    22	
+    23	# Allow members of group sudo to execute any command
+    24	%sudo	ALL=(ALL:ALL) ALL
+    25	
+    26	#Minhas regras
+    27	MYADMINS ALL = PKGMGMNT, SHUTDOWN
+    28	
+    29	# See sudoers(5) for more information on "@include" directives:
+    30	
+    31	@includedir /etc/sudoers.d
+
+######
+
+Salvar e sair
+
+Para testar se tudo deu certo execute a atualização da lista de pacotes usando o sudo
+sysadmin@operacao:~$ sudo apt update
+[sudo] senha para sysadmin: 
+
+Obter:1 http://security.debian.org/debian-security stable-security InRelease [44,1 kB]
+Obter:2 http://deb.debian.org/debian stable InRelease [116 kB]
+Obter:3 http://deb.debian.org/debian stable-updates InRelease [39,4 kB]
+Obter:4 http://security.debian.org/debian-security stable-security/main Sources [103 kB]
+Obter:5 http://security.debian.org/debian-security stable-security/main amd64 Packages [120 kB]
+Obter:6 http://security.debian.org/debian-security stable-security/main Translation-en [76,7 kB]
+Obter:7 http://deb.debian.org/debian stable/main Sources [8.626 kB]
+Obter:8 http://deb.debian.org/debian stable/main amd64 Packages [8.183 kB]
+Obter:9 http://deb.debian.org/debian stable/main Translation-en [6.243 kB]
+Obter:10 http://deb.debian.org/debian stable-updates/main Sources.diff/Index [4.995 B]
+Obter:11 http://deb.debian.org/debian stable-updates/main amd64 Packages.diff/Index [4.995 B]
+Obter:12 http://deb.debian.org/debian stable-updates/main Sources T-2022-01-24-2024.03-F-2022-01-24-2024.03.pdiff [238 B]
+Obter:13 http://deb.debian.org/debian stable-updates/main amd64 Packages T-2022-01-24-2024.03-F-2022-01-24-2024.03.pdiff [1.102 B]
+Obter:12 http://deb.debian.org/debian stable-updates/main Sources T-2022-01-24-2024.03-F-2022-01-24-2024.03.pdiff [238 B]
+Obter:13 http://deb.debian.org/debian stable-updates/main amd64 Packages T-2022-01-24-2024.03-F-2022-01-24-2024.03.pdiff [1.102 B]
+Baixados 23,6 MB em 23s (1.017 kB/s)                                               
+Lendo listas de pacotes... Pronto
+Construindo árvore de dependências... Pronto
+Lendo informação de estado... Pronto        
+57 packages can be upgraded. Run 'apt list --upgradable' to see them.
+N: Repository 'http://deb.debian.org/debian stable InRelease' changed its 'Version' value from '11.1' to '11.2'
+
+
+Desafio:
+Instalar o visual studio code.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
