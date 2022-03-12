@@ -1,0 +1,1052 @@
+Semana 04
+12/03/2022
+
+
+Está no ambiente gráfico e precisa alternar para o terminal de texto use a combinação de teclas:
+
+<ctrl> + <alt> + F1 - /dev/tty1 ou
+<ctrl> + <alt> + F2 - /dev/tty2 ou
+<ctrl> + <alt> + F3 - /dev/tty3 ou
+<ctrl> + <alt> + F4 - /dev/tty4 ou
+<ctrl> + <alt> + F5 - /dev/tty5 ou
+<ctrl> + <alt> + F6 - /dev/tty6
+
+
+Está no terminal de texto e precisa alternar para o ambiente gráfico, se tiver instalado, use a combinação de teclas:
+
+<ctrl> + <alt> + F7 - /dev/tty7 ou
+<ctrl> + <alt> + F8 - /dev/tty8
+
+*Depende da distribuição
+
+
+Está no terminal de texto e precisa alterar entre os terminais de texto:
+
+<alt> + F1 - /dev/tty1 ou
+<alt> + F2 - /dev/tty2 ou
+<alt> + F3 - /dev/tty3 ou
+<alt> + F4 - /dev/tty4 ou
+<alt> + F5 - /dev/tty5 ou
+<alt> + F6 - /dev/tty6
+
+O GNU/Linux possui 64 terminais onde seis são controlados pelo usuario e outros usados para visualização.
+Para acessar tty9, tty10, tty11 e tty12 usa-se as teclas de função F9 a F12
+
+
+Limpar a tecla
+#clear
+
+ou pelo atalho
+<ctrl> + <l>
+
+
+Comandos para logoff
+#exit
+
+ou
+
+#logout
+
+ou pelo atalho
+
+<ctrl> + <d>
+
+
+Comandos para Reiniciar o sistema GNU/Linux
+
+#reboot
+
+ou
+
+#systemctl reboot
+
+ou
+
+#init 6
+
+ou
+
+#echo b > /proc/sysrq-trigger
+
+ou
+
+#shutdown -r now
+
+
+
+Comandos para Desligar o sistema GNU/Linux
+
+#halt 	#Não é o mais recomendado
+	#Instrui o hardware para parar 		todas as funções deixando a CPU 	ligada
+
+#poweroff 	#Instrução mais adequada 			para o desligamento
+	
+
+#shutdown -h now
+
+
+Comando para desligar e/ou reiniciar
+
+#shutdown -r now
+#shutdown -h now
+
+ou
+
+#shutdown -r +5	#Reinicia daqui 5 minutos
+#shutdown -h +5	#Desliga daqui 5 minutos
+
+ou
+
+#shutdown -r 13:30	#Reinicia na hora programada
+#shutdown -h 13:30	#Desliga na hora programada
+
+ou
+
+Reinicia daqui 5 minutos com mensagem aos usuarios logados
+#shutdown -r +5 "Mensagem"		
+
+Desliga daqui 5 minutos com mensagem aos usuarios logados
+#shutdown -h +5	#Desliga daqui 5 minutos
+
+Instalando o LAMPP
+Linux, Apache, MariaDB, PHP7.4 e PHPMyAdmin
+
+sysadmin@operacao:~$ sudo apt update
+[sudo] senha para sysadmin: 
+Atingido:1 http://deb.debian.org/debian stable InRelease
+Obter:2 http://deb.debian.org/debian stable-updates InRelease [39,4 kB]
+Obter:3 http://security.debian.org/debian-security stable-security InRelease [44,1 kB]
+Obter:4 http://security.debian.org/debian-security stable-security/main Sources [109 kB]
+Obter:5 http://security.debian.org/debian-security stable-security/main amd64 Packages [122 kB]
+Obter:6 http://security.debian.org/debian-security stable-security/main Translation-en [78,2 kB]
+Baixados 393 kB em 1s (466 kB/s)                               
+Lendo listas de pacotes... Pronto
+Construindo árvore de dependências... Pronto
+Lendo informação de estado... Pronto        
+57 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+
+sysadmin@operacao:~$ sudo apt install apache2 php mariadb-server -y
+Lendo listas de pacotes... Pronto
+Construindo árvore de dependências... Pronto
+Lendo informação de estado... Pronto        
+The following additional packages will be installed:
+  apache2-bin apache2-data apache2-utils galera-4 gawk libaio1
+  libapache2-mod-php7.4 libapr1 libaprutil1 libaprutil1-dbd-sqlite3
+  libaprutil1-ldap libcgi-fast-perl libcgi-pm-perl
+  libconfig-inifiles-perl libdbd-mariadb-perl libdbi-perl
+  libfcgi-bin libfcgi-perl libfcgi0ldbl libhtml-template-perl
+  liblua5.3-0 libmariadb3 libsigsegv2 libterm-readkey-perl
+  mariadb-client-10.5 mariadb-client-core-10.5 mariadb-common
+  mariadb-server-10.5 mariadb-server-core-10.5 mysql-common
+  php-common php7.4 php7.4-cli php7.4-common php7.4-json
+  php7.4-opcache php7.4-readline psmisc rsync socat ssl-cert
+Pacotes sugeridos:
+  apache2-doc apache2-suexec-pristine | apache2-suexec-custom
+  gawk-doc php-pear libmldbm-perl libnet-daemon-perl
+  libsql-statement-perl libipc-sharedcache-perl mailx mariadb-test
+  netcat-openbsd
+Os NOVOS pacotes a seguir serão instalados:
+  apache2 apache2-bin apache2-data apache2-utils galera-4 gawk
+  libaio1 libapache2-mod-php7.4 libapr1 libaprutil1
+  libaprutil1-dbd-sqlite3 libaprutil1-ldap libcgi-fast-perl
+  libcgi-pm-perl libconfig-inifiles-perl libdbd-mariadb-perl
+  libdbi-perl libfcgi-bin libfcgi-perl libfcgi0ldbl
+  libhtml-template-perl liblua5.3-0 libmariadb3 libsigsegv2
+  libterm-readkey-perl mariadb-client-10.5 mariadb-client-core-10.5
+  mariadb-common mariadb-server mariadb-server-10.5
+  mariadb-server-core-10.5 mysql-common php php-common php7.4
+  php7.4-cli php7.4-common php7.4-json php7.4-opcache
+  php7.4-readline psmisc rsync socat ssl-cert
+0 pacotes atualizados, 44 pacotes novos instalados, 0 a serem removidos e 57 não atualizados.
+É preciso baixar 23,7 MB de arquivos.
+Depois desta operação, 183 MB adicionais de espaço em disco serão usados.
+Obter:1 http://deb.debian.org/debian stable/main amd64 libapr1 amd64 1.7.0-6+deb11u1 [106 kB]
+Obter:2 http://security.debian.org/debian-security stable-security/main amd64 apache2-bin amd64 2.4.52-1~deb11u2 [1.413 kB]
+Obter:3 http://deb.debian.org/debian stable/main amd64 libaprutil1 amd64 1.6.1-5 [92,1 kB]
+Obter:4 http://deb.debian.org/debian stable/main amd64 libaprutil1-dbd-sqlite3 amd64 1.6.1-5 [18,8 kB]
+Obter:5 http://deb.debian.org/debian stable/main amd64 libaprutil1-ldap amd64 1.6.1-5 [17,0 kB]
+Obter:6 http://deb.debian.org/debian stable/main amd64 liblua5.3-0 amd64 5.3.3-1.1+b1 [120 kB]
+Obter:7 http://deb.debian.org/debian stable/main amd64 libsigsegv2 amd64 2.13-1 [34,8 kB]
+Obter:8 http://deb.debian.org/debian stable/main amd64 gawk amd64 1:5.1.0-1 [605 kB]
+Obter:9 http://deb.debian.org/debian stable/main amd64 mysql-common all 5.8+1.0.7 [7.464 B]
+Obter:10 http://security.debian.org/debian-security stable-security/main amd64 apache2-data all 2.4.52-1~deb11u2 [160 kB]
+Obter:11 http://deb.debian.org/debian stable/main amd64 mariadb-common all 1:10.5.12-0+deb11u1 [36,3 kB]
+Obter:12 http://deb.debian.org/debian stable/main amd64 galera-4 amd64 26.4.9-0+deb11u1 [796 kB]
+Obter:13 http://security.debian.org/debian-security stable-security/main amd64 apache2-utils amd64 2.4.52-1~deb11u2 [257 kB]
+Obter:14 http://security.debian.org/debian-security stable-security/main amd64 apache2 amd64 2.4.52-1~deb11u2 [272 kB]
+Obter:15 http://security.debian.org/debian-security stable-security/main amd64 php7.4-common amd64 7.4.28-1+deb11u1 [1.023 kB]
+Obter:16 http://deb.debian.org/debian stable/main amd64 libdbi-perl amd64 1.643-3+b1 [780 kB]
+Obter:17 http://deb.debian.org/debian stable/main amd64 libconfig-inifiles-perl all 3.000003-1 [52,1 kB]
+Obter:18 http://deb.debian.org/debian stable/main amd64 libmariadb3 amd64 1:10.5.12-0+deb11u1 [175 kB]
+Obter:19 http://security.debian.org/debian-security stable-security/main amd64 php7.4-json amd64 7.4.28-1+deb11u1 [19,3 kB]
+Obter:20 http://security.debian.org/debian-security stable-security/main amd64 php7.4-opcache amd64 7.4.28-1+deb11u1 [198 kB]
+Obter:21 http://deb.debian.org/debian stable/main amd64 mariadb-client-core-10.5 amd64 1:10.5.12-0+deb11u1 [779 kB]
+Obter:22 http://security.debian.org/debian-security stable-security/main amd64 php7.4-readline amd64 7.4.28-1+deb11u1 [12,3 kB]
+Obter:23 http://security.debian.org/debian-security stable-security/main amd64 php7.4-cli amd64 7.4.28-1+deb11u1 [1.428 kB]
+Obter:24 http://deb.debian.org/debian stable/main amd64 mariadb-client-10.5 amd64 1:10.5.12-0+deb11u1 [1.496 kB]
+Obter:25 http://deb.debian.org/debian stable/main amd64 libaio1 amd64 0.3.112-9 [12,5 kB]
+Obter:26 http://deb.debian.org/debian stable/main amd64 mariadb-server-core-10.5 amd64 1:10.5.12-0+deb11u1 [6.589 kB]
+Obter:27 http://security.debian.org/debian-security stable-security/main amd64 libapache2-mod-php7.4 amd64 7.4.28-1+deb11u1 [1.374 kB]
+Obter:28 http://security.debian.org/debian-security stable-security/main amd64 php7.4 all 7.4.28-1+deb11u1 [49,5 kB]
+Obter:29 http://deb.debian.org/debian stable/main amd64 psmisc amd64 23.4-2 [198 kB]
+Obter:30 http://deb.debian.org/debian stable/main amd64 rsync amd64 3.2.3-4+deb11u1 [396 kB]
+Obter:31 http://deb.debian.org/debian stable/main amd64 socat amd64 1.7.4.1-3 [370 kB]
+Obter:32 http://deb.debian.org/debian stable/main amd64 mariadb-server-10.5 amd64 1:10.5.12-0+deb11u1 [4.226 kB]
+Obter:33 http://deb.debian.org/debian stable/main amd64 php-common all 2:76 [15,6 kB]
+Obter:34 http://deb.debian.org/debian stable/main amd64 libcgi-pm-perl all 4.51-1 [224 kB]
+Obter:35 http://deb.debian.org/debian stable/main amd64 libfcgi0ldbl amd64 2.4.2-2 [26,1 kB]
+Obter:36 http://deb.debian.org/debian stable/main amd64 libfcgi-perl amd64 0.79+ds-2 [27,6 kB]
+Obter:37 http://deb.debian.org/debian stable/main amd64 libcgi-fast-perl all 1:2.15-1 [12,1 kB]
+Obter:38 http://deb.debian.org/debian stable/main amd64 libdbd-mariadb-perl amd64 1.21-3 [110 kB]
+Obter:39 http://deb.debian.org/debian stable/main amd64 libfcgi-bin amd64 2.4.2-2 [12,9 kB]
+Obter:40 http://deb.debian.org/debian stable/main amd64 libhtml-template-perl all 2.97-1.1 [66,2 kB]
+Obter:41 http://deb.debian.org/debian stable/main amd64 libterm-readkey-perl amd64 2.38-1+b2 [27,8 kB]
+Obter:42 http://deb.debian.org/debian stable/main amd64 mariadb-server all 1:10.5.12-0+deb11u1 [34,9 kB]
+Obter:43 http://deb.debian.org/debian stable/main amd64 php all 2:7.4+76 [6.340 B]
+Obter:44 http://deb.debian.org/debian stable/main amd64 ssl-cert all 1.1.0+nmu1 [21,0 kB]
+Baixados 23,7 MB em 1s (24,0 MB/s)
+Extraindo templates dos pacotes: 100%
+Pré-configurando pacotes ...
+A seleccionar pacote anteriormente não seleccionado libapr1:amd64.
+(Lendo banco de dados ... 102814 ficheiros e directórios actualmente 
+instalados.)
+A preparar para desempacotar .../0-libapr1_1.7.0-6+deb11u1_amd64.deb 
+...
+A descompactar libapr1:amd64 (1.7.0-6+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado libaprutil1:amd64
+.
+A preparar para desempacotar .../1-libaprutil1_1.6.1-5_amd64.deb ...
+A descompactar libaprutil1:amd64 (1.6.1-5) ...
+A seleccionar pacote anteriormente não seleccionado libaprutil1-dbd-s
+qlite3:amd64.
+A preparar para desempacotar .../2-libaprutil1-dbd-sqlite3_1.6.1-5_am
+d64.deb ...
+A descompactar libaprutil1-dbd-sqlite3:amd64 (1.6.1-5) ...
+A seleccionar pacote anteriormente não seleccionado libaprutil1-ldap:
+amd64.
+A preparar para desempacotar .../3-libaprutil1-ldap_1.6.1-5_amd64.deb
+ ...
+A descompactar libaprutil1-ldap:amd64 (1.6.1-5) ...
+A seleccionar pacote anteriormente não seleccionado liblua5.3-0:amd64
+.
+A preparar para desempacotar .../4-liblua5.3-0_5.3.3-1.1+b1_amd64.deb
+ ...
+A descompactar liblua5.3-0:amd64 (5.3.3-1.1+b1) ...
+A seleccionar pacote anteriormente não seleccionado apache2-bin.
+A preparar para desempacotar .../5-apache2-bin_2.4.52-1~deb11u2_amd64
+.deb ...
+A descompactar apache2-bin (2.4.52-1~deb11u2) ...
+A seleccionar pacote anteriormente não seleccionado apache2-data.
+A preparar para desempacotar .../6-apache2-data_2.4.52-1~deb11u2_all.
+deb ...
+A descompactar apache2-data (2.4.52-1~deb11u2) ...
+A seleccionar pacote anteriormente não seleccionado apache2-utils.
+A preparar para desempacotar .../7-apache2-utils_2.4.52-1~deb11u2_amd
+64.deb ...
+A descompactar apache2-utils (2.4.52-1~deb11u2) ...
+A seleccionar pacote anteriormente não seleccionado apache2.
+A preparar para desempacotar .../8-apache2_2.4.52-1~deb11u2_amd64.deb
+ ...
+A descompactar apache2 (2.4.52-1~deb11u2) ...
+A seleccionar pacote anteriormente não seleccionado libsigsegv2:amd64
+.
+A preparar para desempacotar .../9-libsigsegv2_2.13-1_amd64.deb ...
+A descompactar libsigsegv2:amd64 (2.13-1) ...
+Configurando libsigsegv2:amd64 (2.13-1) ...
+A seleccionar pacote anteriormente não seleccionado gawk.
+(Lendo banco de dados ... 103533 ficheiros e directórios actualmente 
+instalados.)
+A preparar para desempacotar .../00-gawk_1%3a5.1.0-1_amd64.deb ...
+A descompactar gawk (1:5.1.0-1) ...
+A seleccionar pacote anteriormente não seleccionado mysql-common.
+A preparar para desempacotar .../01-mysql-common_5.8+1.0.7_all.deb ..
+.
+A descompactar mysql-common (5.8+1.0.7) ...
+A seleccionar pacote anteriormente não seleccionado mariadb-common.
+A preparar para desempacotar .../02-mariadb-common_1%3a10.5.12-0+deb1
+1u1_all.deb ...
+A descompactar mariadb-common (1:10.5.12-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado galera-4.
+A preparar para desempacotar .../03-galera-4_26.4.9-0+deb11u1_amd64.d
+eb ...
+A descompactar galera-4 (26.4.9-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado libdbi-perl:amd64
+.
+A preparar para desempacotar .../04-libdbi-perl_1.643-3+b1_amd64.deb 
+...
+A descompactar libdbi-perl:amd64 (1.643-3+b1) ...
+A seleccionar pacote anteriormente não seleccionado libconfig-inifile
+s-perl.
+A preparar para desempacotar .../05-libconfig-inifiles-perl_3.000003-
+1_all.deb ...
+A descompactar libconfig-inifiles-perl (3.000003-1) ...
+A seleccionar pacote anteriormente não seleccionado libmariadb3:amd64
+.
+A preparar para desempacotar .../06-libmariadb3_1%3a10.5.12-0+deb11u1
+_amd64.deb ...
+A descompactar libmariadb3:amd64 (1:10.5.12-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado mariadb-client-co
+re-10.5.
+A preparar para desempacotar .../07-mariadb-client-core-10.5_1%3a10.5
+.12-0+deb11u1_amd64.deb ...
+A descompactar mariadb-client-core-10.5 (1:10.5.12-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado mariadb-client-10
+.5.
+A preparar para desempacotar .../08-mariadb-client-10.5_1%3a10.5.12-0
++deb11u1_amd64.deb ...
+A descompactar mariadb-client-10.5 (1:10.5.12-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado libaio1:amd64.
+A preparar para desempacotar .../09-libaio1_0.3.112-9_amd64.deb ...
+A descompactar libaio1:amd64 (0.3.112-9) ...
+A seleccionar pacote anteriormente não seleccionado mariadb-server-co
+re-10.5.
+A preparar para desempacotar .../10-mariadb-server-core-10.5_1%3a10.5
+.12-0+deb11u1_amd64.deb ...
+A descompactar mariadb-server-core-10.5 (1:10.5.12-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado psmisc.
+A preparar para desempacotar .../11-psmisc_23.4-2_amd64.deb ...
+A descompactar psmisc (23.4-2) ...
+A seleccionar pacote anteriormente não seleccionado rsync.
+A preparar para desempacotar .../12-rsync_3.2.3-4+deb11u1_amd64.deb .
+..
+A descompactar rsync (3.2.3-4+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado socat.
+A preparar para desempacotar .../13-socat_1.7.4.1-3_amd64.deb ...
+A descompactar socat (1.7.4.1-3) ...
+Configurando mysql-common (5.8+1.0.7) ...
+update-alternatives: a usar /etc/mysql/my.cnf.fallback para disponibi
+lizar /etc/mysql/my.cnf (my.cnf) em modo auto
+Configurando mariadb-common (1:10.5.12-0+deb11u1) ...
+update-alternatives: a usar /etc/mysql/mariadb.cnf para disponibiliza
+r /etc/mysql/my.cnf (my.cnf) em modo auto
+A seleccionar pacote anteriormente não seleccionado mariadb-server-10
+.5.
+(Lendo banco de dados ... 104263 ficheiros e directórios actualmente 
+instalados.)
+A preparar para desempacotar .../00-mariadb-server-10.5_1%3a10.5.12-0
++deb11u1_amd64.deb ...
+A descompactar mariadb-server-10.5 (1:10.5.12-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-common.
+A preparar para desempacotar .../01-php-common_2%3a76_all.deb ...
+A descompactar php-common (2:76) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-common.
+A preparar para desempacotar .../02-php7.4-common_7.4.28-1+deb11u1_am
+d64.deb ...
+A descompactar php7.4-common (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-json.
+A preparar para desempacotar .../03-php7.4-json_7.4.28-1+deb11u1_amd6
+4.deb ...
+A descompactar php7.4-json (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-opcache.
+A preparar para desempacotar .../04-php7.4-opcache_7.4.28-1+deb11u1_a
+md64.deb ...
+A descompactar php7.4-opcache (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-readline.
+A preparar para desempacotar .../05-php7.4-readline_7.4.28-1+deb11u1_
+amd64.deb ...
+A descompactar php7.4-readline (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-cli.
+A preparar para desempacotar .../06-php7.4-cli_7.4.28-1+deb11u1_amd64
+.deb ...
+A descompactar php7.4-cli (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado libapache2-mod-ph
+p7.4.
+A preparar para desempacotar .../07-libapache2-mod-php7.4_7.4.28-1+de
+b11u1_amd64.deb ...
+A descompactar libapache2-mod-php7.4 (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado libcgi-pm-perl.
+A preparar para desempacotar .../08-libcgi-pm-perl_4.51-1_all.deb ...
+A descompactar libcgi-pm-perl (4.51-1) ...
+A seleccionar pacote anteriormente não seleccionado libfcgi0ldbl:amd6
+4.
+A preparar para desempacotar .../09-libfcgi0ldbl_2.4.2-2_amd64.deb ..
+.
+A descompactar libfcgi0ldbl:amd64 (2.4.2-2) ...
+A seleccionar pacote anteriormente não seleccionado libfcgi-perl:amd6
+4.
+A preparar para desempacotar .../10-libfcgi-perl_0.79+ds-2_amd64.deb 
+...
+A descompactar libfcgi-perl:amd64 (0.79+ds-2) ...
+A seleccionar pacote anteriormente não seleccionado libcgi-fast-perl.
+A preparar para desempacotar .../11-libcgi-fast-perl_1%3a2.15-1_all.d
+eb ...
+A descompactar libcgi-fast-perl (1:2.15-1) ...
+A seleccionar pacote anteriormente não seleccionado libdbd-mariadb-pe
+rl.
+A preparar para desempacotar .../12-libdbd-mariadb-perl_1.21-3_amd64.
+deb ...
+A descompactar libdbd-mariadb-perl (1.21-3) ...
+A seleccionar pacote anteriormente não seleccionado libfcgi-bin.
+A preparar para desempacotar .../13-libfcgi-bin_2.4.2-2_amd64.deb ...
+A descompactar libfcgi-bin (2.4.2-2) ...
+A seleccionar pacote anteriormente não seleccionado libhtml-template-
+perl.
+A preparar para desempacotar .../14-libhtml-template-perl_2.97-1.1_al
+l.deb ...
+A descompactar libhtml-template-perl (2.97-1.1) ...
+A seleccionar pacote anteriormente não seleccionado libterm-readkey-p
+erl.
+A preparar para desempacotar .../15-libterm-readkey-perl_2.38-1+b2_am
+d64.deb ...
+A descompactar libterm-readkey-perl (2.38-1+b2) ...
+A seleccionar pacote anteriormente não seleccionado mariadb-server.
+A preparar para desempacotar .../16-mariadb-server_1%3a10.5.12-0+deb1
+1u1_all.deb ...
+A descompactar mariadb-server (1:10.5.12-0+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php7.4.
+A preparar para desempacotar .../17-php7.4_7.4.28-1+deb11u1_all.deb .
+..
+A descompactar php7.4 (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php.
+A preparar para desempacotar .../18-php_2%3a7.4+76_all.deb ...
+A descompactar php (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado ssl-cert.
+A preparar para desempacotar .../19-ssl-cert_1.1.0+nmu1_all.deb ...
+A descompactar ssl-cert (1.1.0+nmu1) ...
+Configurando libconfig-inifiles-perl (3.000003-1) ...
+Configurando galera-4 (26.4.9-0+deb11u1) ...
+Configurando libfcgi0ldbl:amd64 (2.4.2-2) ...
+Configurando gawk (1:5.1.0-1) ...
+Configurando psmisc (23.4-2) ...
+Configurando libcgi-pm-perl (4.51-1) ...
+Configurando libfcgi-bin (2.4.2-2) ...
+Configurando libapr1:amd64 (1.7.0-6+deb11u1) ...
+Configurando libhtml-template-perl (2.97-1.1) ...
+Configurando ssl-cert (1.1.0+nmu1) ...
+Configurando socat (1.7.4.1-3) ...
+Configurando libmariadb3:amd64 (1:10.5.12-0+deb11u1) ...
+Configurando liblua5.3-0:amd64 (5.3.3-1.1+b1) ...
+Configurando libfcgi-perl:amd64 (0.79+ds-2) ...
+Configurando apache2-data (2.4.52-1~deb11u2) ...
+Configurando libterm-readkey-perl (2.38-1+b2) ...
+Configurando libaio1:amd64 (0.3.112-9) ...
+Configurando libdbi-perl:amd64 (1.643-3+b1) ...
+Configurando rsync (3.2.3-4+deb11u1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/rsync.ser
+vice → /lib/systemd/system/rsync.service.
+Configurando libaprutil1:amd64 (1.6.1-5) ...
+Configurando mariadb-server-core-10.5 (1:10.5.12-0+deb11u1) ...
+Configurando php-common (2:76) ...
+Created symlink /etc/systemd/system/timers.target.wants/phpsessioncle
+an.timer → /lib/systemd/system/phpsessionclean.timer.
+Configurando php7.4-common (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/calendar.ini with ne
+w version
+
+Creating config file /etc/php/7.4/mods-available/ctype.ini with new v
+ersion
+
+Creating config file /etc/php/7.4/mods-available/exif.ini with new ve
+rsion
+
+Creating config file /etc/php/7.4/mods-available/fileinfo.ini with ne
+w version
+
+Creating config file /etc/php/7.4/mods-available/ffi.ini with new ver
+sion
+
+Creating config file /etc/php/7.4/mods-available/ftp.ini with new ver
+sion
+
+Creating config file /etc/php/7.4/mods-available/gettext.ini with new
+ version
+
+Creating config file /etc/php/7.4/mods-available/iconv.ini with new v
+ersion
+
+Creating config file /etc/php/7.4/mods-available/pdo.ini with new ver
+sion
+
+Creating config file /etc/php/7.4/mods-available/phar.ini with new ve
+rsion
+
+Creating config file /etc/php/7.4/mods-available/posix.ini with new v
+ersion
+
+Creating config file /etc/php/7.4/mods-available/shmop.ini with new v
+ersion
+
+Creating config file /etc/php/7.4/mods-available/sockets.ini with new
+ version
+
+Creating config file /etc/php/7.4/mods-available/sysvmsg.ini with new
+ version
+
+Creating config file /etc/php/7.4/mods-available/sysvsem.ini with new
+ version
+
+Creating config file /etc/php/7.4/mods-available/sysvshm.ini with new
+ version
+
+Creating config file /etc/php/7.4/mods-available/tokenizer.ini with n
+ew version
+Configurando libcgi-fast-perl (1:2.15-1) ...
+Configurando php7.4-readline (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/readline.ini with ne
+w version
+Configurando libaprutil1-ldap:amd64 (1.6.1-5) ...
+Configurando libaprutil1-dbd-sqlite3:amd64 (1.6.1-5) ...
+Configurando libdbd-mariadb-perl (1.21-3) ...
+Configurando mariadb-client-core-10.5 (1:10.5.12-0+deb11u1) ...
+Configurando mariadb-client-10.5 (1:10.5.12-0+deb11u1) ...
+Configurando php7.4-opcache (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/opcache.ini with new
+ version
+Configurando apache2-utils (2.4.52-1~deb11u2) ...
+Configurando php7.4-json (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/json.ini with new ve
+rsion
+Configurando php7.4-cli (7.4.28-1+deb11u1) ...
+update-alternatives: a usar /usr/bin/php7.4 para disponibilizar /usr/
+bin/php (php) em modo auto
+update-alternatives: a usar /usr/bin/phar7.4 para disponibilizar /usr
+/bin/phar (phar) em modo auto
+update-alternatives: a usar /usr/bin/phar.phar7.4 para disponibilizar
+ /usr/bin/phar.phar (phar.phar) em modo auto
+
+Creating config file /etc/php/7.4/cli/php.ini with new version
+Configurando apache2-bin (2.4.52-1~deb11u2) ...
+Configurando mariadb-server-10.5 (1:10.5.12-0+deb11u1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/mariadb.s
+ervice → /lib/systemd/system/mariadb.service.
+Configurando mariadb-server (1:10.5.12-0+deb11u1) ...
+Configurando libapache2-mod-php7.4 (7.4.28-1+deb11u1) ...
+Package apache2 is not configured yet. Will defer actions by package 
+libapache2-mod-php7.4.
+
+Creating config file /etc/php/7.4/apache2/php.ini with new version
+No module matches 
+Configurando apache2 (2.4.52-1~deb11u2) ...
+Enabling module mpm_event.
+Enabling module authz_core.
+Enabling module authz_host.
+Enabling module authn_core.
+Enabling module auth_basic.
+Enabling module access_compat.
+Enabling module authn_file.
+Enabling module authz_user.
+Enabling module alias.
+Enabling module dir.
+Enabling module autoindex.
+Enabling module env.
+Enabling module mime.
+Enabling module negotiation.
+Enabling module setenvif.
+Enabling module filter.
+Enabling module deflate.
+Enabling module status.
+Enabling module reqtimeout.
+Enabling conf charset.
+Enabling conf localized-error-pages.
+Enabling conf other-vhosts-access-log.
+Enabling conf security.
+Enabling conf serve-cgi-bin.
+Enabling site 000-default.
+info: Switch to mpm prefork for package libapache2-mod-php7.4
+Module mpm_event disabled.
+Enabling module mpm_prefork.
+info: Executing deferred 'a2enmod php7.4' for package libapache2-mod-
+php7.4
+Enabling module php7.4.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache2.s
+ervice → /lib/systemd/system/apache2.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/apache-ht
+cacheclean.service → /lib/systemd/system/apache-htcacheclean.service.
+Configurando php7.4 (7.4.28-1+deb11u1) ...
+Configurando php (2:7.4+76) ...
+A processar 'triggers' para man-db (2.9.4-2) ...
+A processar 'triggers' para libc-bin (2.31-13+deb11u2) ...
+A processar 'triggers' para php7.4-cli (7.4.28-1+deb11u1) ...
+A processar 'triggers' para libapache2-mod-php7.4 (7.4.28-1+deb11u1) 
+...
+
+
+sysadmin@operacao:~$ sudo apt install phpmyadmin -y
+Lendo listas de pacotes... Pronto
+Construindo árvore de dependências... Pronto
+Lendo informação de estado... Pronto        
+The following additional packages will be installed:
+  dbconfig-common dbconfig-mysql icc-profiles-free libjs-bootstrap4
+  libjs-codemirror libjs-jquery-mousewheel libjs-jquery-timepicker
+  libjs-jquery-ui libjs-openlayers libjs-popper.js libjs-sizzle
+  libonig5 libzip4 node-jquery php-bz2 php-curl php-gd
+  php-google-recaptcha php-mariadb-mysql-kbs php-mbstring php-mysql
+  php-phpmyadmin-motranslator php-phpmyadmin-shapefile
+  php-phpmyadmin-sql-parser php-phpseclib php-psr-cache
+  php-psr-container php-psr-log php-symfony-cache
+  php-symfony-cache-contracts php-symfony-config
+  php-symfony-dependency-injection php-symfony-expression-language
+  php-symfony-filesystem php-symfony-service-contracts
+  php-symfony-var-exporter php-symfony-yaml php-tcpdf php-twig
+  php-twig-i18n-extension php-xml php-zip php7.4-bz2 php7.4-curl
+  php7.4-gd php7.4-mbstring php7.4-mysql php7.4-xml php7.4-zip
+Pacotes sugeridos:
+  libjs-requirejs libjs-jquery-ui-docs php-dbase php-libsodium
+  php-mcrypt php-gmp php-symfony-finder
+  php-symfony-proxy-manager-bridge php-symfony-console php-imagick
+  php-twig-doc php-recode php-gd2 php-pragmarx-google2fa-qrcode
+  php-samyoul-u2f-php-server
+Pacotes recomendados:
+  php-mcrypt
+Os NOVOS pacotes a seguir serão instalados:
+  dbconfig-common dbconfig-mysql icc-profiles-free libjs-bootstrap4
+  libjs-codemirror libjs-jquery-mousewheel libjs-jquery-timepicker
+  libjs-jquery-ui libjs-openlayers libjs-popper.js libjs-sizzle
+  libonig5 libzip4 node-jquery php-bz2 php-curl php-gd
+  php-google-recaptcha php-mariadb-mysql-kbs php-mbstring php-mysql
+  php-phpmyadmin-motranslator php-phpmyadmin-shapefile
+  php-phpmyadmin-sql-parser php-phpseclib php-psr-cache
+  php-psr-container php-psr-log php-symfony-cache
+  php-symfony-cache-contracts php-symfony-config
+  php-symfony-dependency-injection php-symfony-expression-language
+  php-symfony-filesystem php-symfony-service-contracts
+  php-symfony-var-exporter php-symfony-yaml php-tcpdf php-twig
+  php-twig-i18n-extension php-xml php-zip php7.4-bz2 php7.4-curl
+  php7.4-gd php7.4-mbstring php7.4-mysql php7.4-xml php7.4-zip
+  phpmyadmin
+0 pacotes atualizados, 50 pacotes novos instalados, 0 a serem removidos e 57 não atualizados.
+É preciso baixar 19,1 MB de arquivos.
+Depois desta operação, 89,8 MB adicionais de espaço em disco serão usados.
+Obter:1 http://security.debian.org/debian-security stable-security/main amd64 php7.4-bz2 amd64 7.4.28-1+deb11u1 [10,4 kB]
+Obter:2 http://deb.debian.org/debian stable/main amd64 dbconfig-common all 2.0.19 [609 kB]
+Obter:3 http://security.debian.org/debian-security stable-security/main amd64 php7.4-curl amd64 7.4.28-1+deb11u1 [31,1 kB]
+Obter:4 http://security.debian.org/debian-security stable-security/main amd64 php7.4-gd amd64 7.4.28-1+deb11u1 [27,9 kB]
+Obter:5 http://security.debian.org/debian-security stable-security/main amd64 php7.4-mbstring amd64 7.4.28-1+deb11u1 [397 kB]
+Obter:6 http://security.debian.org/debian-security stable-security/main amd64 php7.4-mysql amd64 7.4.28-1+deb11u1 [121 kB]
+Obter:7 http://security.debian.org/debian-security stable-security/main amd64 php7.4-xml amd64 7.4.28-1+deb11u1 [98,4 kB]
+Obter:8 http://security.debian.org/debian-security stable-security/main amd64 php7.4-zip amd64 7.4.28-1+deb11u1 [21,4 kB]
+Obter:9 http://deb.debian.org/debian stable/main amd64 dbconfig-mysql all 2.0.19 [1.088 B]
+Obter:10 http://deb.debian.org/debian stable/main amd64 icc-profiles-free all 2.0.1+dfsg-1.1 [214 kB]
+Obter:11 http://deb.debian.org/debian stable/main amd64 libjs-popper.js all 1.16.1+ds-3 [51,9 kB]
+Obter:12 http://deb.debian.org/debian stable/main amd64 libjs-bootstrap4 all 4.5.2+dfsg1-7 [2.482 kB]
+Obter:13 http://deb.debian.org/debian stable/main amd64 libjs-codemirror all 5.59.2+~cs0.23.109-1 [729 kB]
+Obter:14 http://deb.debian.org/debian stable/main amd64 libjs-jquery-mousewheel all 1:3.1.13-2 [7.356 B]
+Obter:15 http://deb.debian.org/debian stable/main amd64 libjs-jquery-ui all 1.12.1+dfsg-8+deb11u1 [232 kB]
+Obter:16 http://deb.debian.org/debian stable/main amd64 libjs-jquery-timepicker all 1.6.3-1 [48,2 kB]
+Obter:17 http://deb.debian.org/debian stable/main amd64 libjs-openlayers all 2.13.1+ds2-8 [715 kB]
+Obter:18 http://deb.debian.org/debian stable/main amd64 libjs-sizzle all 2.3.5+ds-2 [31,5 kB]
+Obter:19 http://deb.debian.org/debian stable/main amd64 libonig5 amd64 6.9.6-1.1 [185 kB]
+Obter:20 http://deb.debian.org/debian stable/main amd64 libzip4 amd64 1.7.3-1 [55,4 kB]
+Obter:21 http://deb.debian.org/debian stable/main amd64 node-jquery all 3.5.1+dfsg+~3.5.5-7 [159 kB]
+Obter:22 http://deb.debian.org/debian stable/main amd64 php-bz2 all 2:7.4+76 [6.360 B]
+Obter:23 http://deb.debian.org/debian stable/main amd64 php-curl all 2:7.4+76 [6.364 B]
+Obter:24 http://deb.debian.org/debian stable/main amd64 php-gd all 2:7.4+76 [6.360 B]
+Obter:25 http://deb.debian.org/debian stable/main amd64 php-google-recaptcha all 1.2.4-3 [17,0 kB]
+Obter:26 http://deb.debian.org/debian stable/main amd64 php-mariadb-mysql-kbs all 1.2.12-1 [48,2 kB]
+Obter:27 http://deb.debian.org/debian stable/main amd64 php-mbstring all 2:7.4+76 [6.372 B]
+Obter:28 http://deb.debian.org/debian stable/main amd64 php-mysql all 2:7.4+76 [6.360 B]
+Obter:29 http://deb.debian.org/debian stable/main amd64 php-psr-cache all 1.0.1-2 [5.736 B]
+Obter:30 http://deb.debian.org/debian stable/main amd64 php-psr-log all 1.1.3-2 [9.232 B]
+Obter:31 http://deb.debian.org/debian stable/main amd64 php-symfony-cache-contracts all 1.1.10-2 [7.300 B]
+Obter:32 http://deb.debian.org/debian stable/main amd64 php-psr-container all 1.0.0-2 [3.436 B]
+Obter:33 http://deb.debian.org/debian stable/main amd64 php-symfony-service-contracts all 1.1.10-2 [8.052 B]
+Obter:34 http://deb.debian.org/debian stable/main amd64 php-symfony-var-exporter all 4.4.19+dfsg-2 [25,7 kB]
+Obter:35 http://deb.debian.org/debian stable/main amd64 php-symfony-cache all 4.4.19+dfsg-2 [63,7 kB]
+Obter:36 http://deb.debian.org/debian stable/main amd64 php-symfony-expression-language all 4.4.19+dfsg-2 [29,1 kB]
+Obter:37 http://deb.debian.org/debian stable/main amd64 php-phpmyadmin-motranslator all 5.2.0-1 [12,2 kB]
+Obter:38 http://deb.debian.org/debian stable/main amd64 php-phpmyadmin-shapefile all 2.1-5 [45,6 kB]
+Obter:39 http://deb.debian.org/debian stable/main amd64 php-phpmyadmin-sql-parser all 5.4.1-1 [78,5 kB]
+Obter:40 http://deb.debian.org/debian stable/main amd64 php-phpseclib all 2.0.30-2 [192 kB]
+Obter:41 http://deb.debian.org/debian stable/main amd64 php-symfony-filesystem all 4.4.19+dfsg-2 [26,1 kB]
+Obter:42 http://deb.debian.org/debian stable/main amd64 php-symfony-config all 4.4.19+dfsg-2 [55,3 kB]
+Obter:43 http://deb.debian.org/debian stable/main amd64 php-symfony-dependency-injection all 4.4.19+dfsg-2 [117 kB]
+Obter:44 http://deb.debian.org/debian stable/main amd64 php-symfony-yaml all 4.4.19+dfsg-2 [39,4 kB]
+Obter:45 http://deb.debian.org/debian stable/main amd64 php-tcpdf all 6.3.5+dfsg1-1 [7.830 kB]
+Obter:46 http://deb.debian.org/debian stable/main amd64 php-twig all 2.14.3-1 [120 kB]
+Obter:47 http://deb.debian.org/debian stable/main amd64 php-twig-i18n-extension all 3.0.0-2 [8.016 B]
+Obter:48 http://deb.debian.org/debian stable/main amd64 php-xml all 2:7.4+76 [6.384 B]
+Obter:49 http://deb.debian.org/debian stable/main amd64 php-zip all 2:7.4+76 [6.360 B]
+Obter:50 http://deb.debian.org/debian stable/main amd64 phpmyadmin all 4:5.0.4+dfsg2-2 [4.106 kB]
+Baixados 19,1 MB em 1s (23,4 MB/s) 
+Extraindo templates dos pacotes: 100%
+Pré-configurando pacotes ...
+A seleccionar pacote anteriormente não seleccionado dbconfig-common.
+(Lendo banco de dados ... 104661 ficheiros e directórios actualmente 
+instalados.)
+A preparar para desempacotar .../00-dbconfig-common_2.0.19_all.deb ..
+.
+A descompactar dbconfig-common (2.0.19) ...
+A seleccionar pacote anteriormente não seleccionado dbconfig-mysql.
+A preparar para desempacotar .../01-dbconfig-mysql_2.0.19_all.deb ...
+A descompactar dbconfig-mysql (2.0.19) ...
+A seleccionar pacote anteriormente não seleccionado icc-profiles-free
+.
+A preparar para desempacotar .../02-icc-profiles-free_2.0.1+dfsg-1.1_
+all.deb ...
+A descompactar icc-profiles-free (2.0.1+dfsg-1.1) ...
+A seleccionar pacote anteriormente não seleccionado libjs-popper.js.
+A preparar para desempacotar .../03-libjs-popper.js_1.16.1+ds-3_all.d
+eb ...
+A descompactar libjs-popper.js (1.16.1+ds-3) ...
+A seleccionar pacote anteriormente não seleccionado libjs-bootstrap4.
+A preparar para desempacotar .../04-libjs-bootstrap4_4.5.2+dfsg1-7_al
+l.deb ...
+A descompactar libjs-bootstrap4 (4.5.2+dfsg1-7) ...
+A seleccionar pacote anteriormente não seleccionado libjs-codemirror.
+A preparar para desempacotar .../05-libjs-codemirror_5.59.2+~cs0.23.1
+09-1_all.deb ...
+A descompactar libjs-codemirror (5.59.2+~cs0.23.109-1) ...
+A seleccionar pacote anteriormente não seleccionado libjs-jquery-mous
+ewheel.
+A preparar para desempacotar .../06-libjs-jquery-mousewheel_1%3a3.1.1
+3-2_all.deb ...
+A descompactar libjs-jquery-mousewheel (1:3.1.13-2) ...
+A seleccionar pacote anteriormente não seleccionado libjs-jquery-ui.
+A preparar para desempacotar .../07-libjs-jquery-ui_1.12.1+dfsg-8+deb
+11u1_all.deb ...
+A descompactar libjs-jquery-ui (1.12.1+dfsg-8+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado libjs-jquery-time
+picker.
+A preparar para desempacotar .../08-libjs-jquery-timepicker_1.6.3-1_a
+ll.deb ...
+A descompactar libjs-jquery-timepicker (1.6.3-1) ...
+A seleccionar pacote anteriormente não seleccionado libjs-openlayers.
+A preparar para desempacotar .../09-libjs-openlayers_2.13.1+ds2-8_all
+.deb ...
+A descompactar libjs-openlayers (2.13.1+ds2-8) ...
+A seleccionar pacote anteriormente não seleccionado libjs-sizzle.
+A preparar para desempacotar .../10-libjs-sizzle_2.3.5+ds-2_all.deb .
+..
+A descompactar libjs-sizzle (2.3.5+ds-2) ...
+A seleccionar pacote anteriormente não seleccionado libonig5:amd64.
+A preparar para desempacotar .../11-libonig5_6.9.6-1.1_amd64.deb ...
+A descompactar libonig5:amd64 (6.9.6-1.1) ...
+A seleccionar pacote anteriormente não seleccionado libzip4:amd64.
+A preparar para desempacotar .../12-libzip4_1.7.3-1_amd64.deb ...
+A descompactar libzip4:amd64 (1.7.3-1) ...
+A seleccionar pacote anteriormente não seleccionado node-jquery.
+A preparar para desempacotar .../13-node-jquery_3.5.1+dfsg+~3.5.5-7_a
+ll.deb ...
+A descompactar node-jquery (3.5.1+dfsg+~3.5.5-7) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-bz2.
+A preparar para desempacotar .../14-php7.4-bz2_7.4.28-1+deb11u1_amd64
+.deb ...
+A descompactar php7.4-bz2 (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-bz2.
+A preparar para desempacotar .../15-php-bz2_2%3a7.4+76_all.deb ...
+A descompactar php-bz2 (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-curl.
+A preparar para desempacotar .../16-php7.4-curl_7.4.28-1+deb11u1_amd6
+4.deb ...
+A descompactar php7.4-curl (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-curl.
+A preparar para desempacotar .../17-php-curl_2%3a7.4+76_all.deb ...
+A descompactar php-curl (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-gd.
+A preparar para desempacotar .../18-php7.4-gd_7.4.28-1+deb11u1_amd64.
+deb ...
+A descompactar php7.4-gd (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-gd.
+A preparar para desempacotar .../19-php-gd_2%3a7.4+76_all.deb ...
+A descompactar php-gd (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado php-google-recapt
+cha.
+A preparar para desempacotar .../20-php-google-recaptcha_1.2.4-3_all.
+deb ...
+A descompactar php-google-recaptcha (1.2.4-3) ...
+A seleccionar pacote anteriormente não seleccionado php-mariadb-mysql
+-kbs.
+A preparar para desempacotar .../21-php-mariadb-mysql-kbs_1.2.12-1_al
+l.deb ...
+A descompactar php-mariadb-mysql-kbs (1.2.12-1) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-mbstring.
+A preparar para desempacotar .../22-php7.4-mbstring_7.4.28-1+deb11u1_
+amd64.deb ...
+A descompactar php7.4-mbstring (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-mbstring.
+A preparar para desempacotar .../23-php-mbstring_2%3a7.4+76_all.deb .
+..
+A descompactar php-mbstring (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-mysql.
+A preparar para desempacotar .../24-php7.4-mysql_7.4.28-1+deb11u1_amd
+64.deb ...
+A descompactar php7.4-mysql (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-mysql.
+A preparar para desempacotar .../25-php-mysql_2%3a7.4+76_all.deb ...
+A descompactar php-mysql (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado php-psr-cache.
+A preparar para desempacotar .../26-php-psr-cache_1.0.1-2_all.deb ...
+A descompactar php-psr-cache (1.0.1-2) ...
+A seleccionar pacote anteriormente não seleccionado php-psr-log.
+A preparar para desempacotar .../27-php-psr-log_1.1.3-2_all.deb ...
+A descompactar php-psr-log (1.1.3-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-cache
+-contracts.
+A preparar para desempacotar .../28-php-symfony-cache-contracts_1.1.1
+0-2_all.deb ...
+A descompactar php-symfony-cache-contracts (1.1.10-2) ...
+A seleccionar pacote anteriormente não seleccionado php-psr-container
+.
+A preparar para desempacotar .../29-php-psr-container_1.0.0-2_all.deb
+ ...
+A descompactar php-psr-container (1.0.0-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-servi
+ce-contracts.
+A preparar para desempacotar .../30-php-symfony-service-contracts_1.1
+.10-2_all.deb ...
+A descompactar php-symfony-service-contracts (1.1.10-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-var-e
+xporter.
+A preparar para desempacotar .../31-php-symfony-var-exporter_4.4.19+d
+fsg-2_all.deb ...
+A descompactar php-symfony-var-exporter (4.4.19+dfsg-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-cache
+.
+A preparar para desempacotar .../32-php-symfony-cache_4.4.19+dfsg-2_a
+ll.deb ...
+A descompactar php-symfony-cache (4.4.19+dfsg-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-expre
+ssion-language.
+A preparar para desempacotar .../33-php-symfony-expression-language_4
+.4.19+dfsg-2_all.deb ...
+A descompactar php-symfony-expression-language (4.4.19+dfsg-2) ...
+A seleccionar pacote anteriormente não seleccionado php-phpmyadmin-mo
+translator.
+A preparar para desempacotar .../34-php-phpmyadmin-motranslator_5.2.0
+-1_all.deb ...
+A descompactar php-phpmyadmin-motranslator (5.2.0-1) ...
+A seleccionar pacote anteriormente não seleccionado php-phpmyadmin-sh
+apefile.
+A preparar para desempacotar .../35-php-phpmyadmin-shapefile_2.1-5_al
+l.deb ...
+A descompactar php-phpmyadmin-shapefile (2.1-5) ...
+A seleccionar pacote anteriormente não seleccionado php-phpmyadmin-sq
+l-parser.
+A preparar para desempacotar .../36-php-phpmyadmin-sql-parser_5.4.1-1
+_all.deb ...
+A descompactar php-phpmyadmin-sql-parser (5.4.1-1) ...
+A seleccionar pacote anteriormente não seleccionado php-phpseclib.
+A preparar para desempacotar .../37-php-phpseclib_2.0.30-2_all.deb ..
+.
+A descompactar php-phpseclib (2.0.30-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-files
+ystem.
+A preparar para desempacotar .../38-php-symfony-filesystem_4.4.19+dfs
+g-2_all.deb ...
+A descompactar php-symfony-filesystem (4.4.19+dfsg-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-confi
+g.
+A preparar para desempacotar .../39-php-symfony-config_4.4.19+dfsg-2_
+all.deb ...
+A descompactar php-symfony-config (4.4.19+dfsg-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-depen
+dency-injection.
+A preparar para desempacotar .../40-php-symfony-dependency-injection_
+4.4.19+dfsg-2_all.deb ...
+A descompactar php-symfony-dependency-injection (4.4.19+dfsg-2) ...
+A seleccionar pacote anteriormente não seleccionado php-symfony-yaml.
+A preparar para desempacotar .../41-php-symfony-yaml_4.4.19+dfsg-2_al
+l.deb ...
+A descompactar php-symfony-yaml (4.4.19+dfsg-2) ...
+A seleccionar pacote anteriormente não seleccionado php-tcpdf.
+A preparar para desempacotar .../42-php-tcpdf_6.3.5+dfsg1-1_all.deb .
+..
+A descompactar php-tcpdf (6.3.5+dfsg1-1) ...
+A seleccionar pacote anteriormente não seleccionado php-twig.
+A preparar para desempacotar .../43-php-twig_2.14.3-1_all.deb ...
+A descompactar php-twig (2.14.3-1) ...
+A seleccionar pacote anteriormente não seleccionado php-twig-i18n-ext
+ension.
+A preparar para desempacotar .../44-php-twig-i18n-extension_3.0.0-2_a
+ll.deb ...
+A descompactar php-twig-i18n-extension (3.0.0-2) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-xml.
+A preparar para desempacotar .../45-php7.4-xml_7.4.28-1+deb11u1_amd64
+.deb ...
+A descompactar php7.4-xml (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-xml.
+A preparar para desempacotar .../46-php-xml_2%3a7.4+76_all.deb ...
+A descompactar php-xml (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado php7.4-zip.
+A preparar para desempacotar .../47-php7.4-zip_7.4.28-1+deb11u1_amd64
+.deb ...
+A descompactar php7.4-zip (7.4.28-1+deb11u1) ...
+A seleccionar pacote anteriormente não seleccionado php-zip.
+A preparar para desempacotar .../48-php-zip_2%3a7.4+76_all.deb ...
+A descompactar php-zip (2:7.4+76) ...
+A seleccionar pacote anteriormente não seleccionado phpmyadmin.
+A preparar para desempacotar .../49-phpmyadmin_4%3a5.0.4+dfsg2-2_all.
+deb ...
+A descompactar phpmyadmin (4:5.0.4+dfsg2-2) ...
+Configurando php7.4-xml (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/dom.ini with new ver
+sion
+
+Creating config file /etc/php/7.4/mods-available/simplexml.ini with n
+ew version
+
+Creating config file /etc/php/7.4/mods-available/xml.ini with new ver
+sion
+
+Creating config file /etc/php/7.4/mods-available/xmlreader.ini with n
+ew version
+
+Creating config file /etc/php/7.4/mods-available/xmlwriter.ini with n
+ew version
+
+Creating config file /etc/php/7.4/mods-available/xsl.ini with new ver
+sion
+Configurando php7.4-curl (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/curl.ini with new ve
+rsion
+Configurando php7.4-mysql (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/mysqlnd.ini with new
+ version
+
+Creating config file /etc/php/7.4/mods-available/mysqli.ini with new 
+version
+
+Creating config file /etc/php/7.4/mods-available/pdo_mysql.ini with n
+ew version
+Configurando libjs-popper.js (1.16.1+ds-3) ...
+Configurando php-phpmyadmin-shapefile (2.1-5) ...
+Configurando libzip4:amd64 (1.7.3-1) ...
+Configurando php-psr-container (1.0.0-2) ...
+Configurando libjs-jquery-mousewheel (1:3.1.13-2) ...
+Configurando php-symfony-service-contracts (1.1.10-2) ...
+Configurando php7.4-bz2 (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/bz2.ini with new ver
+sion
+Configurando dbconfig-common (2.0.19) ...
+
+Creating config file /etc/dbconfig-common/config with new version
+Configurando php-mariadb-mysql-kbs (1.2.12-1) ...
+Configurando libjs-sizzle (2.3.5+ds-2) ...
+Configurando php-phpseclib (2.0.30-2) ...
+Configurando libjs-jquery-ui (1.12.1+dfsg-8+deb11u1) ...
+Configurando php7.4-zip (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/zip.ini with new ver
+sion
+Configurando libjs-codemirror (5.59.2+~cs0.23.109-1) ...
+Configurando icc-profiles-free (2.0.1+dfsg-1.1) ...
+Configurando php-symfony-filesystem (4.4.19+dfsg-2) ...
+Configurando php-psr-cache (1.0.1-2) ...
+Configurando php-psr-log (1.1.3-2) ...
+Configurando php-symfony-config (4.4.19+dfsg-2) ...
+Configurando php-zip (2:7.4+76) ...
+Configurando libjs-jquery-timepicker (1.6.3-1) ...
+Configurando libjs-openlayers (2.13.1+ds2-8) ...
+Configurando libjs-bootstrap4 (4.5.2+dfsg1-7) ...
+Configurando php-symfony-yaml (4.4.19+dfsg-2) ...
+Configurando php-google-recaptcha (1.2.4-3) ...
+Configurando php-symfony-var-exporter (4.4.19+dfsg-2) ...
+Configurando libonig5:amd64 (6.9.6-1.1) ...
+Configurando php7.4-gd (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/gd.ini with new vers
+ion
+Configurando node-jquery (3.5.1+dfsg+~3.5.5-7) ...
+Configurando php-xml (2:7.4+76) ...
+Configurando php-curl (2:7.4+76) ...
+Configurando php-mysql (2:7.4+76) ...
+Configurando php-symfony-cache-contracts (1.1.10-2) ...
+Configurando php-tcpdf (6.3.5+dfsg1-1) ...
+Configurando php-bz2 (2:7.4+76) ...
+Configurando php-symfony-dependency-injection (4.4.19+dfsg-2) ...
+Configurando dbconfig-mysql (2.0.19) ...
+Configurando php7.4-mbstring (7.4.28-1+deb11u1) ...
+
+Creating config file /etc/php/7.4/mods-available/mbstring.ini with ne
+w version
+Configurando php-mbstring (2:7.4+76) ...
+Configurando php-symfony-cache (4.4.19+dfsg-2) ...
+Configurando php-symfony-expression-language (4.4.19+dfsg-2) ...
+Configurando php-phpmyadmin-sql-parser (5.4.1-1) ...
+Configurando php-twig (2.14.3-1) ...
+Configurando php-gd (2:7.4+76) ...
+Configurando php-twig-i18n-extension (3.0.0-2) ...
+Configurando php-phpmyadmin-motranslator (5.2.0-1) ...
+Configurando phpmyadmin (4:5.0.4+dfsg2-2) ...
+Determining localhost credentials from /etc/mysql/debian.cnf: succeed
+ed.
+dbconfig-common: writing config to /etc/dbconfig-common/phpmyadmin.co
+nf
+
+Creating config file /etc/dbconfig-common/phpmyadmin.conf with new ve
+rsion
+
+Creating config file /etc/phpmyadmin/config-db.php with new version
+checking privileges on database phpmyadmin for phpmyadmin@localhost: 
+user creation needed.
+granting access to database phpmyadmin for phpmyadmin@localhost: succ
+ess.
+verifying access for phpmyadmin@localhost: success.
+creating database phpmyadmin: success.
+verifying database phpmyadmin exists: success.
+populating database via sql...  done.
+dbconfig-common: flushing administrative password
+apache2_invoke: Enable configuration phpmyadmin
+A processar 'triggers' para libapache2-mod-php7.4 (7.4.28-1+deb11u1) 
+...
+A processar 'triggers' para hicolor-icon-theme (0.17-2) ...
+A processar 'triggers' para libc-bin (2.31-13+deb11u2) ...
+A processar 'triggers' para man-db (2.9.4-2) ...
+A processar 'triggers' para php7.4-cli (7.4.28-1+deb11u1) ...
+
+
+Observação:
+Durante a instalação do phpmyadmin você será questionado sobre qual servidor web vai instalar o programa. Escolha usando a tecla espaço o servidor web APACHE2
+Ainda durante a instalação você será questionado sobre a criação do banco de dados do phpmyadmin
+Responda ok para a primeira janela informativa
+e depois responda SIM para criação da base do phpmyadmin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
