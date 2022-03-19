@@ -1,0 +1,205 @@
+Semana05
+19/03/2022
+
+
+Comando history -> Exibe o histórico dos ultimos 500 comandos ou instrução executadas no shell
+
+sysadmin@operacao:~$ history
+    1  su -
+    2  exit
+    3  ping 4.2.2.2
+    4  ping www.ifsp.edu.br
+    5  sudo apt install cmatrix
+    6  su -
+    7  exit
+    8  poweroff
+    9  reboot
+   10  exit
+   11  ls /boot
+   12  ls -l /boot
+   13  ls -lh /boot
+   14  clear
+   15  whoami
+   16  hostname
+   17  pwd
+   18  echo $user
+   19  echo $USER
+   20  su
+   21  su -
+   22  sudo apt update
+   23  exit
+   24  cat /etc/motd 
+   25  cat /etc/issue
+   26  exit
+   27  logoff
+   28  logout
+   29  su - fulano
+   30  exit
+   31  w
+   32  clear
+   33  sudo apt update
+   34  sudo apt install apache2 php mariadbserver -y
+   35  sudo apt install apache2 php mariadb-server -y
+   36  sudo apt install phpmyadmin -y
+   37  exit
+   38  history
+
+Podemos executar um comando da lista usando a ! + número da linha
+
+sysadmin@operacao:~$ !33
+sudo apt update
+[sudo] senha para sysadmin: 
+Atingido:1 http://deb.debian.org/debian stable InRelease
+Obter:2 http://deb.debian.org/debian stable-updates InRelease [39,4 kB]
+Obter:3 http://security.debian.org/debian-security stable-security InRelease [44,1 kB]
+Obter:4 http://security.debian.org/debian-security stable-security/main Sources [109 kB]
+Obter:5 http://security.debian.org/debian-security stable-security/main amd64 Packages [121 kB]
+Obter:6 http://security.debian.org/debian-security stable-security/main Translation-en [77,5 kB]
+Baixados 392 kB em 1s (312 kB/s)                         
+Lendo listas de pacotes... Pronto
+Construindo árvore de dependências... Pronto
+Lendo informação de estado... Pronto        
+62 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+Por meio do atalho
+<ctrl> + <r>
+
+Podemos pesquisar sobre algum comando armazenado no history por meio de uma palavra chave 
+
+
+Para zerar o histórico de comandos usa-se:
+sysadmin@operacao:~$ history -c
+
+Resultado depois da limpeza do histórico
+sysadmin@operacao:~$ history 
+    1  history 
+
+
+Comando para consultar pacotes instalados no Debian e sua família
+
+root@operacao:~# dpkg -l
+
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/t>
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/t>
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Nome                                  Versão           >
++++-=====================================-=================>
+ii  acl                                   2.2.53-10        >
+ii  adduser                               3.118            >
+ii  acl                                   2.2.53-10        >
+ii  acl                                   2.2.53-10        >
+ii  adduser                               3.118            >
+ii  adwaita-icon-theme                    3.38.0-1         >
+ii  alsa-topology-conf                    1.2.4-1          >
+ii  alsa-ucm-conf                         1.2.4-2          >
+ii  alsa-utils                            1.2.4-1          >
+ii  anacron                               2.3-30           >
+ii  apache2                               2.4.52-1~deb11u2 >
+ii  apache2-bin                           2.4.52-1~deb11u2 >
+ii  apache2-data                          2.4.52-1~deb11u2 >
+ii  apache2-utils                         2.4.52-1~deb11u2 >
+
+
+root@operacao:~# dpkg -l | grep php
+ii  libapache2-mod-php7.4                 7.4.28-1+deb11u1                amd64        server-side, HTML-embedded scripting language (Apache 2 module)
+ii  php                                   2:7.4+76                        all          server-side, HTML-embedded scripting language (default)
+ii  php-bz2                               2:7.4+76                        all          bzip2 module for PHP [default]
+ii  php-common                            2:76                            all          Common files for PHP packages
+ii  php-curl                              2:7.4+76                        all          CURL module for PHP [default]
+ii  php-gd                                2:7.4+76                        all          GD module for PHP [default]
+ii  php-google-recaptcha                  1.2.4-3                         all          reCAPTCHA PHP client library
+ii  php-mariadb-mysql-kbs                 1.2.12-1                        all          Knowledge base about MariaDB and MySQL server variables
+ii  php-mbstring                          2:7.4+76                        all          MBSTRING module for PHP [default]
+ii  php-mysql                             2:7.4+76                        all          MySQL module for PHP [default]
+ii  php-phpmyadmin-motranslator           5.2.0-1                         all          translation API for PHP using Gettext MO files
+ii  php-phpmyadmin-shapefile              2.1-5                           all          translation API for PHP using Gettext MO files
+ii  php-phpmyadmin-sql-parser             5.4.1-1                         all          validating SQL lexer and parser
+ii  php-phpseclib                         2.0.30-2                        all          implementations of an arbitrary-precision integer arithmetic library
+ii  php-psr-cache                         1.0.1-2                         all          Common interface for caching libraries
+ii  php-psr-container                     1.0.0-2                         all          Common Container Interface (PHP FIG PSR-11)
+ii  php-psr-log                           1.1.3-2                         all          common interface for logging libraries
+ii  php-symfony-cache                     4.4.19+dfsg-2                   all          provides an extended PSR-6, PSR-16 (and tags) implementation
+ii  php-symfony-cache-contracts           1.1.10-2                        all          Generic abstractions related to caching
+ii  php-symfony-config                    4.4.19+dfsg-2                   all          load configurations from different data sources
+ii  php-symfony-dependency-injection      4.4.19+dfsg-2                   all          standardize and centralize construction of objects
+ii  php-symfony-expression-language       4.4.19+dfsg-2                   all          compile and evaluate expressions
+ii  php-symfony-filesystem                4.4.19+dfsg-2                   all          basic filesystem utilities
+ii  php-symfony-service-contracts         1.1.10-2                        all          Generic abstractions related to writing services
+ii  php-symfony-var-exporter              4.4.19+dfsg-2                   all          export serializable PHP data structure to plain PHP code
+ii  php-symfony-yaml                      4.4.19+dfsg-2                   all          convert YAML to PHP arrays and the other way around
+ii  php-tcpdf                             6.3.5+dfsg1-1                   all          PHP class for generating PDF files on-the-fly
+ii  php-twig                              2.14.3-1                        all          Flexible, fast, and secure template engine for PHP
+ii  php-twig-i18n-extension               3.0.0-2                         all          i18n extension for the Twig template system
+ii  php-xml                               2:7.4+76                        all          DOM, SimpleXML, WDDX, XML, and XSL module for PHP [default]
+ii  php-zip                               2:7.4+76                        all          Zip module for PHP [default]
+ii  php7.4                                7.4.28-1+deb11u1                all          server-side, HTML-embedded scripting language (metapackage)
+ii  php7.4-bz2                            7.4.28-1+deb11u1                amd64        bzip2 module for PHP
+ii  php7.4-cli                            7.4.28-1+deb11u1                amd64        command-line interpreter for the PHP scripting language
+ii  php7.4-common                         7.4.28-1+deb11u1                amd64        documentation, examples and common module for PHP
+ii  php7.4-curl                           7.4.28-1+deb11u1                amd64        CURL module for PHP
+ii  php7.4-gd                             7.4.28-1+deb11u1                amd64        GD module for PHP
+ii  php7.4-json                           7.4.28-1+deb11u1                amd64        JSON module for PHP
+ii  php7.4-mbstring                       7.4.28-1+deb11u1                amd64        MBSTRING module for PHP
+ii  php7.4-mysql                          7.4.28-1+deb11u1                amd64        MySQL module for PHP
+ii  php7.4-opcache                        7.4.28-1+deb11u1                amd64        Zend OpCache module for PHP
+ii  php7.4-readline                       7.4.28-1+deb11u1                amd64        readline module for PHP
+ii  php7.4-xml                            7.4.28-1+deb11u1                amd64        DOM, SimpleXML, XML, and XSL module for PHP
+ii  php7.4-zip                            7.4.28-1+deb11u1                amd64        Zip module for PHP
+ii  phpmyadmin                            4:5.0.4+dfsg2-2                 all          MySQL web administration tool
+
+
+Instalando o visual studio code
+Acessar a pagina oficial do programa e faça o download do pacote para sistema debian
+
+sysadmin@operacao:~$cd Downloads
+
+sysadmin@operacao:~/Downloads$ ls
+code_1.65.2-1646927742_amd64.deb
+
+sysadmin@operacao:~/Downloads$ sudo dpkg -i code_1.65.2-1646927742_amd64.deb 
+
+
+Só esperar a instalação
+
+
+Quando a instalação der algum problema ou algum pacote quebrado use:
+
+sysadmin@operacao:~/Downloads$sudo apt install -f
+
+
+
+Criando área de trabalho do desenvolvedor
+
+sysadmin@operacao:~$ mkdir developer
+sysadmin@operacao:~$ mkdir developer/projeto01
+sysadmin@operacao:~$ cd developer/projeto01/
+sysadmin@operacao:~$ mkdir _images
+sysadmin@operacao:~$ mkdir _styles
+sysadmin@operacao:~$ mkdir _scripts
+sysadmin@operacao:~$ touch index.html
+
+sysadmin@operacao:~$ ls -la
+
+sysadmin@operacao:~$ git
+sysadmin@operacao:~$ git init
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
